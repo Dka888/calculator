@@ -18,7 +18,7 @@ export class AppComponent {
   memory: string | null = null;
 
   Reset(): void {
-    this.firstNumber = null;
+    this.firstNumber = '0';
     this.secondNumber = null;
     this.display = '0';
   }
@@ -106,6 +106,18 @@ export class AppComponent {
 
   }
 
+  MinusFromMemory(): void {
+    this.memory = (Number(this.memory) - Number(this.display)).toString();
+  }
+  
+  ResetMemory(): void  {
+    this.memory = null;
+  }
+
+  ShowMemory(): void {
+    this.display = this.memory;
+  }
+
   GetComa(): void {
     if(this.secondNumber && !this.secondNumber.includes('.')) {
       this.secondNumber += '.';
@@ -119,16 +131,37 @@ export class AppComponent {
     }
   }
 
-  MinusFromMemory(): void {
-    this.memory = (Number(this.memory) - Number(this.display)).toString();
+  getFraction(): void {
+    if (this.display === this.firstNumber) {
+      this.firstNumber = removeZeros((1 / Number(this.firstNumber)).toFixed(10));
+      this.display = this.firstNumber;
+    }
+    if (this.display === this.secondNumber) {
+      this.firstNumber = removeZeros((1 / Number(this.secondNumber)).toFixed(10));
+      this.display = this.secondNumber;
+    }
   }
 
-  ResetMemory(): void  {
-    this.memory = null;
+  getPower(): void {
+    if (this.display === this.firstNumber) {
+      this.firstNumber = removeZeros(Math.pow(Number(this.firstNumber), 2).toFixed(10));
+      this.display = this.firstNumber;
+    }
+    if (this.display === this.secondNumber) {
+      this.secondNumber = removeZeros(Math.pow(Number(this.secondNumber), 2).toFixed(10));
+      this.display = this.secondNumber;
+    }
   }
 
-  ShowMemory(): void {
-    this.display = this.memory;
+  getSquare(): void {
+    if (this.display === this.firstNumber) {
+      this.firstNumber = removeZeros(Math.sqrt(Number(this.firstNumber)).toFixed(10));
+      this.display = this.firstNumber;
+    }
+    if (this.display === this.secondNumber) {
+      this.secondNumber = removeZeros(Math.sqrt(Number(this.secondNumber)).toFixed(10));
+      this.display = this.secondNumber;
+    }
   }
 
   Delete(): void {
@@ -145,11 +178,32 @@ export class AppComponent {
 const getCount = (firstNumber: number, char: string, secondNumber: number = 0): string => {
   switch (char) {
     case 'add': 
-      const sum = (firstNumber + secondNumber);
-      return sum.toFixed(1);
-    case 'minus': return (firstNumber - secondNumber).toFixed(1);
-    case 'multiple': return (firstNumber * secondNumber).toFixed(1);
-    case 'divide': return (firstNumber / secondNumber).toFixed(1);
+      const sum = (firstNumber + secondNumber).toFixed(10);
+      return removeZeros(sum);
+    case 'minus':
+      const result = (firstNumber - secondNumber).toFixed(10);
+      return removeZeros(result);
+    case 'multiple':
+      const multiply = (firstNumber * secondNumber).toFixed(10);
+      return removeZeros(multiply);
+    case 'divide':
+      const devideResult = (firstNumber / secondNumber).toFixed(10);
+      return removeZeros(devideResult);
     default: return firstNumber.toString();
   }
+}
+
+const removeZeros = (number: string): string => {
+  if (number.includes('.')) {
+    if (number[number.length - 1] !== '0' && number[number.length - 1] !== '.') {
+      return number;
+    }
+    if(number[number.length - 1] === '.') {
+      return number.slice(0, number.length - 1);
+    }
+    const arrayOfNUmbers = number.split('');
+    arrayOfNUmbers.pop();
+    return removeZeros(arrayOfNUmbers.join(''));
+  }
+  return number;
 }
