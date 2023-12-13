@@ -36,15 +36,16 @@
       }
 
       .display {
-        width: 95%;
+        width: 90%;
         min-height: 50px;
         max-width: 390px;
         border: 2px solid black;
         display: flex;
         justify-content: flex-end;
         font-size: 2.5rem;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         align-items: flex-end;
+        text-align: end;
         background-color: rgb(61, 35, 35);
         color: #fff;
         border-radius: 4px;
@@ -135,7 +136,7 @@
       </div>
       <h1 class="title">{{title}}</h1>
     </div>
-    <section class="display"> {{display}} </section>
+    <section class=""> <input class="display" type="text" value={{display}} maxlength=13> </section>
     <section class="buttons">
       <article class="buttons__memory">
         <div class="buttons__memory-button" (click)="ResetMemory()">MC</div>
@@ -172,7 +173,7 @@
 
         <div class="buttons__regular-button" (click)="ChangeSymbol()">+/-</div>
         <div class="buttons__regular-button" (click)="ChooseButton(0)">0</div>
-        <div class="buttons__regular-button">,</div>
+        <div class="buttons__regular-button" (click)="GetComa()">,</div>
         <div class="buttons__regular-button" (click)="Count()">=</div>
       </article>
     </section>
