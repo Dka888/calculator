@@ -48,13 +48,13 @@ export class AppComponent {
     if (this.secondNumber) {
       this.secondNumber = this.secondNumber[0] === '0' && this.secondNumber[1] !== '.' ? this.secondNumber.slice(1) : this.secondNumber;
     }
-    if (!this.char && this.firstNumber) {
+    if (!this.char && this.firstNumber && this.firstNumber.length < 14) {
       this.firstNumber += number.toString();
     }
     if (!this.firstNumber) {
       this.firstNumber = number.toString();
     }
-    if (this.secondNumber) {
+    if (this.secondNumber && this.secondNumber.length < 14) {
       this.secondNumber += number.toString();
     }
     if (this.char && this.firstNumber && !this.secondNumber) {
@@ -68,7 +68,7 @@ export class AppComponent {
       this.char = char;
     }
     if (this.secondNumber && this.char) {
-      this.firstNumber = getCount(Number(this.firstNumber), this.char, Number(this.secondNumber));
+      this.firstNumber = getCount(Number(this.firstNumber), this.char, Number(this.secondNumber)).slice(0, 13);
       this.secondNumber = null;
       this.display = this.firstNumber;
     }
@@ -81,7 +81,7 @@ export class AppComponent {
   }
   Count(): void {
     if (this.char) {
-      this.firstNumber = getCount(Number(this.firstNumber), this.char, Number(this.secondNumber));
+      this.firstNumber = findE(getCount(Number(this.firstNumber), this.char, Number(this.secondNumber))).slice(0, 13);
       this.secondNumber = null;
       this.char = null;
       this.display = this.firstNumber;
@@ -92,17 +92,17 @@ export class AppComponent {
     if(this.firstNumber && this.secondNumber) {
         switch(this.char) {
           case 'multiple':
-          this.firstNumber = (Number(this.firstNumber) * Number(this.secondNumber) / 100).toString();
+          this.firstNumber = findE((Number(this.firstNumber) * Number(this.secondNumber) / 100).toString()).slice(0, 13);
           this.char = null;
           this.display = this.firstNumber;
           break;
           case 'add':
-            this.firstNumber = (Number(this.firstNumber) + Number(this.firstNumber) * Number(this.secondNumber) / 100).toString();
+            this.firstNumber = findE((Number(this.firstNumber) + Number(this.firstNumber) * Number(this.secondNumber) / 100).toString()).slice(0, 13);
             this.char = null;
             this.display = this.firstNumber;
           break;
           case 'minus':
-            this.firstNumber = (Number(this.firstNumber) - Number(this.firstNumber) * Number(this.secondNumber) / 100).toString();
+            this.firstNumber = findE((Number(this.firstNumber) - Number(this.firstNumber) * Number(this.secondNumber) / 100).toString()).slice(0, 13);
             this.char = null;
             this.display = this.firstNumber;
             break;
@@ -158,11 +158,11 @@ export class AppComponent {
 
   getPower(): void {
     if (this.display === this.firstNumber) {
-      this.firstNumber = removeZeros(Math.pow(Number(this.firstNumber), 2).toFixed(10));
+      this.firstNumber = findE(removeZeros(Math.pow(Number(this.firstNumber), 2).toFixed(10))).slice(0, 13);
       this.display = this.firstNumber;
     }
     if (this.display === this.secondNumber) {
-      this.secondNumber = removeZeros(Math.pow(Number(this.secondNumber), 2).toFixed(10));
+      this.secondNumber = findE(removeZeros(Math.pow(Number(this.secondNumber), 2).toFixed(10))).slice(0, 13);
       this.display = this.secondNumber;
     }
   }
@@ -218,6 +218,15 @@ const removeZeros = (number: string): string => {
     const arrayOfNUmbers = number.split('');
     arrayOfNUmbers.pop();
     return removeZeros(arrayOfNUmbers.join(''));
+  }
+  return number;
+}
+
+
+const findE = (number: string) => {
+  const findEinNumber = /[e]/;
+  if (findEinNumber.test(number)) {
+    return 'error';
   }
   return number;
 }
