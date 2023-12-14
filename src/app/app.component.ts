@@ -17,8 +17,19 @@ export class AppComponent {
   display: string | null = null;
   char: string | null = null;
   memory: string | null = null;
+  isMenu = false;
 
-  options = 'exchange';
+  options = ['Calculator', 'Exchange', 'BMI']
+  option = 'Calculator';
+
+  changeOptions(option: string) :void {
+    this.option = option;
+    this.isMenu = false;
+  }
+
+  openMenu():void {
+    this.isMenu = !this.isMenu;
+  }
 
   Reset(): void {
     this.firstNumber = '0';
@@ -112,7 +123,7 @@ export class AppComponent {
   MinusFromMemory(): void {
     this.memory = (Number(this.memory) - Number(this.display)).toString();
   }
-  
+
   ResetMemory(): void  {
     this.memory = null;
   }
@@ -180,7 +191,7 @@ export class AppComponent {
 
 const getCount = (firstNumber: number, char: string, secondNumber: number = 0): string => {
   switch (char) {
-    case 'add': 
+    case 'add':
       const sum = (firstNumber + secondNumber).toFixed(10);
       return removeZeros(sum);
     case 'minus':

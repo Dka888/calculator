@@ -1,14 +1,23 @@
 <main class="main">
-<app-exchange *ngIf="options ==='exchange'"></app-exchange>
 
-  <div class="content" *ngIf="options === 'calculator'">
     <div class="calculator__header">
-      <div class="menu">
+      <div class="menu-img" (click)="openMenu()">
         <img src="../assets/menu.svg" alt="menu">
       </div>
-      <h1 class="title">{{title}}</h1>
+      <h1 class="title">{{option}}</h1>
     </div>
-    <section class=""> <input class="display" type="text" value={{display}} maxlength=13 disabled> </section>
+
+<app-exchange *ngIf="option ==='Exchange'"></app-exchange>
+
+<div class="menu" *ngIf="isMenu">
+  <ul>
+    <li (click)="changeOptions('Calculator')">Calculator</li>
+    <li (click)="changeOptions('Exchange')">Exchange</li>
+    <li (click)="changeOptions('BMI')">BMI</li>
+  </ul>
+</div>
+<div class="content" *ngIf="option === 'Calculator'">
+  <section class=""> <input class="display" type="text" value={{display}} maxlength=13 disabled> </section>
     <section class="buttons">
       <article class="buttons__memory">
         <div class="buttons__memory-button" (click)="ResetMemory()">MC</div>

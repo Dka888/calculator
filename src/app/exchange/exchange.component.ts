@@ -14,9 +14,9 @@ export class ExchangeComponent {
   display = 0;
   currencies: string[] = [];
   http = inject(HttpClient);
-  selectedCurrency: string = 'USD';
+  selectedCurrency: string = 'EUR';
   convertedAmount = 0;
-  outputCurrency: string = 'USD';
+  outputCurrency: string = 'PLN';
 
   ngOnInit(): void {
     this.getCurrencies();
@@ -41,6 +41,7 @@ export class ExchangeComponent {
   Delete(): void {
     const amount = this.display.toString();
     this.display = +amount.slice(0, amount.length - 1);
+    this.convertCurrency();
   }
 
   convertCurrency() {
