@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="exchange__header">
+    <div class="menu">
+      <img src="../assets/menu.svg" alt="menu">
+    </div>
+    <h1 class="title">Exchange</h1>
+  </div>
+  <section class="exchange">
+    <article class="display">
+      <div>
+        <input value={{display}} disabled>
+        <label >
+          <select [(ngModel)]="selectedCurrency" (click)="convertCurrency()">
+            <option  *ngFor="let currency of currencies" value={{currency}}>{{currency}}</option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <input value={{convertedAmount}} disabled>
+        <label >
+          <select [(ngModel)]="outputCurrency" (click)="convertCurrency()">
+            <option  *ngFor="let currency of currencies" value={{currency}}>{{currency}}</option>
+          </select>
+        </label>
+      </div>
+    </article>
+    <article class="buttons__regular">
+      <div class="buttons__regular-button" (click)="Reset()">C</div>
+      <div class="buttons__regular-button"(click)="Delete()" ><i class="material-icons" style="font-size:20px">&#xe14a;</i></div>
+      <div class="buttons__regular-button" (click)="ChooseButton(7)">7</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(8)">8</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(9)">9</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(4)">4</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(5)">5</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(6)">6</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(1)">1</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(2)">2</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(3)">3</div>
+      <div class="buttons__regular-button" (click)="ChooseButton(0)">0</div>
+    </article>
+  </section>
+</div>

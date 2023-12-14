@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import {ExchangeComponent} from './exchange/exchange.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ExchangeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -16,6 +17,8 @@ export class AppComponent {
   display: string | null = null;
   char: string | null = null;
   memory: string | null = null;
+
+  options = 'exchange';
 
   Reset(): void {
     this.firstNumber = '0';

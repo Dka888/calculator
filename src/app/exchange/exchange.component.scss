@@ -1,0 +1,76 @@
+.content {
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  width: 400px;
+
+  .exchange__header {
+    display: flex;
+    gap: 10px;
+
+    .menu {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.exchange {
+  display: flex;
+  gap: 15px;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 45%;
+
+  input {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
+  select {
+    width: 130px;
+    padding: 0.3rem 0.5rem;
+    margin: 1rem auto;
+  }
+}
+.buttons__regular {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  color: black;
+
+  .buttons__regular-button {
+    width: 20%;
+    min-height: 30px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3em 0.2rem ;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:first-child {
+      margin-left: 50px;
+    }
+  }
+}
