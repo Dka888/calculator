@@ -1,0 +1,43 @@
+<div class="content">
+  <section class=""> <input class="display" type="text" value={{display}} maxlength=13 disabled> </section>
+    <section class="buttons">
+      <article class="buttons__memory">
+        <div class="buttons__memory-button" (click)="ResetMemory()">MC</div>
+        <div class="buttons__memory-button" (click)="ShowMemory()">MR</div>
+        <div class="buttons__memory-button" (click)="AddToMemory()">M+</div>
+        <div class="buttons__memory-button" (click)="MinusFromMemory()">M-</div>
+        <div class="buttons__memory-button" (click)="SetMemory()">MS</div>
+      </article>
+      <article class="buttons__regular">
+        <div class="buttons__regular-button" (click)="Procent()">%</div>
+        <div class="buttons__regular-button" (click)="ResetActual()" >CE</div>
+        <div class="buttons__regular-button" (click)="Reset()" >C</div>
+        <div class="buttons__regular-button"(click)="Delete()" ><i class="material-icons" style="font-size:20px">&#xe14a;</i></div>
+
+        <div class="buttons__regular-button"(click)="getFraction()">1/x</div>
+        <div class="buttons__regular-button"(click)="getPower()">x<span style="font-size: 7px;">2</span></div>
+        <div class="buttons__regular-button" (click)="getSquare()">&Sqrt;x</div>
+        <div class="buttons__regular-button"  (click)="ChooseChar('divide')">/</div>
+
+        <div class="buttons__regular-button" (click)="ChooseButton(7)">7</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(8)">8</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(9)">9</div>
+        <div class="buttons__regular-button" (click)="ChooseChar('multiple')">x</div>
+
+        <div class="buttons__regular-button" (click)="ChooseButton(4)">4</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(5)">5</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(6)">6</div>
+        <div class="buttons__regular-button" (click)="ChooseChar('minus')">-</div>
+
+        <div class="buttons__regular-button" (click)="ChooseButton(1)">1</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(2)">2</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(3)">3</div>
+        <div class="buttons__regular-button" (click)="ChooseChar('add')">+</div>
+
+        <div class="buttons__regular-button" (click)="ChangeSymbol()">+/-</div>
+        <div class="buttons__regular-button" (click)="ChooseButton(0)">0</div>
+        <div class="buttons__regular-button" (click)="GetComa()">,</div>
+        <div class="buttons__regular-button" (click)="Count()">=</div>
+      </article>
+    </section>
+  </div>
