@@ -1,0 +1,52 @@
+<div class="content">
+  <section>
+    <div >
+      <label class="bmi__label">
+        <p>Age</p>
+        <input placeholder="25" type="number" min="2" max="120" class="bmi__label-input" [(ngModel)]="age"/>
+        <legend>
+          <p>ages: 2 - 120</p>
+        </legend>
+      </label>
+    </div>
+    <div>
+      <fieldset class="bmi__fieldset" >
+        <legend>Gender</legend>
+        <div>
+          <input type="radio" name="sex" value="Male" [(ngModel)]="gender"/>
+          <label for="Male">Male</label>
+        </div>
+        <div>
+          <input type="radio" name="sex" value="Female" [(ngModel)]="gender"/>
+          <label for="Female">Female</label>
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <label class="bmi__label">
+        <p>Height</p>
+        <input type="number" min="80" max="220" class="bmi__label-input bmi__label-input--data" [(ngModel)]="height">
+      </label>
+    </div>
+    <div>
+      <label class="bmi__label" >
+        <p>Weight</p>
+        <input type="number" min="30" max="200" class="bmi__label-input bmi__label-input--data" [(ngModel)]="weight">
+      </label>
+    </div>
+    <div class="buttons">
+      <label class="bmi__label">
+        <input type="submit" value="calculate" class="bmi__button-calculate" (click)="getCountBMI()">
+        </label>
+        <label class="bmi__label">
+        <input type="submit" value="clear" class="bmi__button-clear" (click)="clear()">
+      </label>
+    </div>
+  </section>
+  <section>
+    <div class="bmi__output" [ngStyle]="{'color': categoryOfBmi === 'Normal' ? 'rgb(95, 249, 60)' : 'red'}">
+      <p *ngIf="bmi !== 0">BMI = {{bmi}}</p>
+      <p>{{categoryOfBmi | uppercase}}</p>
+    </div>
+  </section>
+</div>

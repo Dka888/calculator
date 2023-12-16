@@ -9,6 +9,8 @@
 
 <app-exchange *ngIf="option ==='Exchange'"></app-exchange>
 <app-regular-calculator *ngIf="option === 'Calculator'"></app-regular-calculator>
+<app-bmi *ngIf="option === 'BMI'"></app-bmi>
+
 <div class="menu" *ngIf="isMenu">
   <ul>
     <li (click)="changeOptions('Calculator')">Calculator</li>

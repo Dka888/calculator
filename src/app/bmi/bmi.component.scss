@@ -1,0 +1,74 @@
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px
+}
+
+.bmi__label {
+  margin: auto;
+
+  &-input {
+    height: 20px;
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+    width: 100px;
+
+    &--data {
+      width: 150px;
+    }
+  }
+}
+
+.bmi__fieldset {
+  width: 150px;
+  margin: auto 2rem;
+
+  input {
+    margin: 0.4rem;
+  }
+
+  div {
+    display: flex;
+  }
+}
+
+
+.buttons {
+  padding: 1rem;
+  border: 1px solid lightblue;
+  margin: 10px 2rem;
+  display: flex;
+
+}
+
+.bmi__button {
+
+  &-calculate {
+
+    background-color: rgb(30, 128, 8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-clear {
+    background-color: gray;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+}
+
+.bmi__output {
+  width: 100px;
+  margin: auto;
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: 700;
+}
