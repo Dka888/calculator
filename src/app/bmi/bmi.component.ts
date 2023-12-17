@@ -25,9 +25,9 @@ export class BmiComponent {
   categoryOfBmi: string = '';
 
   getCountBMI(): void {
-
-    this.bmi = Math.round(Math.pow(this.weight, 2) / this.height);
+    this.bmi = +(this.weight / Math.pow(this.height, 2) * 10000).toFixed(2);
     this.getCategory(this.bmi);
+    console.log(this.bmi)
   }
 
   getCategory(bmiValue: number): void {
@@ -35,7 +35,7 @@ export class BmiComponent {
         this.categoryOfBmi = 'Underweight';
       } else if(bmiValue >= 19 && bmiValue < 25) {
         this.categoryOfBmi = 'Normal';
-      } else if(bmiValue <=25 && bmiValue < 30) {
+      } else if(bmiValue >=25 && bmiValue < 30) {
         this.categoryOfBmi = 'Overweight';
       } else if(bmiValue > 30) this.categoryOfBmi = 'Obesity';
   }
