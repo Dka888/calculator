@@ -134,6 +134,7 @@ export class RegularCalculatorComponent {
   getFraction(): void {
     if (this.display === this.firstNumber) {
       this.firstNumber = removeZeros((1 / Number(this.firstNumber)).toFixed(10));
+      console.log(Number(this.firstNumber));
       this.display = this.firstNumber;
     }
     if (this.display === this.secondNumber) {
