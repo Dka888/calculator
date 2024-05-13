@@ -47,6 +47,7 @@ export class RegularCalculatorComponent {
     }
 
     this.display = this.secondNumber ? this.secondNumber : this.firstNumber;
+    console.log(this.firstNumber, this.secondNumber, this.char);
   }
   ChooseChar(char: string): void {
     if (!this.secondNumber) {
@@ -55,8 +56,11 @@ export class RegularCalculatorComponent {
     if (this.secondNumber && this.char) {
       this.firstNumber = getCount(Number(this.firstNumber), this.char, Number(this.secondNumber)).slice(0, 13);
       this.secondNumber = null;
+      this.char = char;
       this.display = this.firstNumber;
     }
+
+    console.log(this.firstNumber, this.secondNumber, this.char)
   }
   ChangeSymbol(): void {
     this.display === this.secondNumber
